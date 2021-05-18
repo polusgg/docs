@@ -4,7 +4,7 @@ The public API is used by <ins>clients</ins>.
 
 ### Base URL
 
-The base path for all **public** API requests is `/api/v1`.
+The base path for all public API requests is `/api/v1`.
 
 ---
 

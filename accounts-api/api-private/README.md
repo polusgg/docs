@@ -4,7 +4,7 @@ The private API is used by <ins>server nodes</ins>.
 
 ### Base URL
 
-The base path for all **public** API requests is `/api-private/v1`.
+The base path for all private API requests is `/api-private/v1`.
 
 ---
 
