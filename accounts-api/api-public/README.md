@@ -29,9 +29,9 @@ As described in the `Content-Type` header, the request body should be a JSON str
 
 ```ts
 {
-  // The user's Polus.gg user email address
+  // The user's Polus.gg account email address
   "email": string,
-  // The user's Polus.gg user password
+  // The user's Polus.gg account password
   "password": string
 }
 ```
