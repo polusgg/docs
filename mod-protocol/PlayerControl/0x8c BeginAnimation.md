@@ -19,5 +19,6 @@
 ## S2C (Request)
 | Type | Name | Description |
 | --- | --- | --- |
+| `UInt16`              | Bitfield  | What fields are sent past this field |
 | `AnimationKeyframe[]` | Keyframes | The keyframes of the animation |
 | `Boolean`             | Reset     | Should the animation reset to default state once complete |
