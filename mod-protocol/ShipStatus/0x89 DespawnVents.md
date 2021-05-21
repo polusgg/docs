@@ -2,7 +2,7 @@
 ## S2C (Request)
 | Type | Name | Description |
 | --- | --- | --- |
-| `Byte` | VentCount | How many vents are in the list. |
-| `Byte[]` | VentIDs | Each vent 
+| `PackedUInt32` | VentCount | How many vents are in the list. |
+| `Byte[]` | VentIDs | Each vent to be destroyed. |
 
-Revives the Player that the RPC was sent on.
+Destroys all of the vents listed on the ship.
