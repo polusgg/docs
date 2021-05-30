@@ -4,5 +4,4 @@ Dead bodies contain the following components:
 ```
   - DeadBody
   - CustomNetworkTransform
-  - ClickBehaviour
 ```
