@@ -3,9 +3,9 @@
 | Type | Name | Description |
 | --- | --- | --- |
 | `PackedUInt32` | ResourceID | The ID of the Resource |
-| `Byte` | ResourceType | The type of the Resource being downloaded |
 | `String` | ResourceLocation | The location of the Resource as a URL |
 | `Byte[]` | hash | The MD5 hash of the resource |
+| `Byte` | ResourceType | The type of the Resource being downloaded |
 
 ## C2S (Response)
 | Type | Name | Description |
