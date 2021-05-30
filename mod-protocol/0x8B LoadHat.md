@@ -1,4 +1,4 @@
-# `0x91` Root - LoadHat
+# `0x8B` Root - LoadHat
 
 ## S2C (Request)
 |      Type      |      Name      |              Description              |
