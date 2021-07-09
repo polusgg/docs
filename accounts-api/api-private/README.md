@@ -84,7 +84,11 @@ A successful response (`200 OK`) will return a JSON string with the following st
       "name.color.gold": boolean,
       // Whether or not the user chose a player name matching their character color
       "name.color.match": boolean
-    }
+    },
+    // The user's game options
+    "options": [
+        // ...
+    ]
   }
 }
 ```
@@ -92,6 +96,64 @@ A successful response (`200 OK`) will return a JSON string with the following st
 A `401 Unauthorized` response will be returned if the server access token is invalid.
 
 A `404 Not Found` response will be returned if no user with the given hyphenated UUID exists.
+
+## Update Game Options
+
+Update a user's game options.
+
+| Method | Endpoint |
+| --- | --- |
+| `PUT` | `/users/<uuid>/options` where `<uuid>` is the user's hyphenated UUID |
+
+#### Request
+
+The request requires the following headers:
+
+| Header | Value |
+| --- | --- |
+| `Accept` | `application/json` |
+| `Content-Type` | `application/json` |
+| `Authorization` | `Bearer <token>` where `<token>` is the server's access token |
+
+As described in the `Content-Type` header, the request body should be a JSON string with the following structure:
+
+```ts
+{
+  "value": {
+    // Numbers
+    "value": number,
+    "step": number,
+    "lower": number,
+    "upper": number,
+    "zeroIsInfinity": boolean,
+    "suffix": string,
+  } | {
+    // Booleans
+    "value": boolean
+  } | {
+    // Enums
+    "index": number,
+    "options": string[],
+  },
+  "category": string,
+  "priority": number,
+  "key": string,
+}
+```
+
+#### Response
+
+A successful response (`200 OK`) will return a JSON string with the following structure:
+
+```ts
+{
+  "success": true
+}
+```
+
+A `401 Unauthorized` response will be returned if the login failed.
+
+A `400 Bad Request` response will be returned if the body has any missing or malformed fields.
 
 ## Kick a User
 
