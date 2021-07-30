@@ -49,6 +49,8 @@ A successful response (`200 OK`) will return a JSON string with the following st
     "client_id": string,
     // The user's access token
     "client_token": string,
+    // The user's Discord ID
+    "discord_id": string | null,
     // The user's display name
     "display_name": string,
     // - If the user is currently banned then this will be an ISO 8601
@@ -135,6 +137,8 @@ A successful response (`200 OK`) will return a JSON string with the following st
     "client_id": string,
     // The user's access token
     "client_token": string,
+    // The user's Discord ID
+    "discord_id": string | null,
     // The user's display name
     "display_name": string,
     // - If the user is currently banned then this will be an ISO 8601
