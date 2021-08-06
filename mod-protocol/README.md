@@ -13,10 +13,7 @@
 - 0x88 DeclareKillAnim
 - 0x89 SetGameOption
 - 0x8A DeleteGameOption
-- 0x96 LoadHat
-- 0x97 LoadPet
-- 0x98 SetBody
-- 0x99 LoadSkin
+- 0x8B LoadHat
 - 0xFA DisplaySystemAlert
 
 ## List of RPCs to implement
@@ -36,8 +33,6 @@
 - 0x8d BeginAnimation (CameraController)
 - 0x8e CustomEnterVent
 - 0x8f CustomExitVent
-- 0x90 SetCountingDown
-- 0x91 ReportDeadBody
 
 ## List of PNOs to implement
 

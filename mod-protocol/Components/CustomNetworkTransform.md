@@ -5,7 +5,7 @@ CustomNetworkTransform which has ClientAspect boolean to determine whether Aspec
 |`Byte`|Alignment|Alignment from the screen|
 |`Vector2`|Position|Position of the object|
 |`Float32`|ZAxis|The Z component of the object's position|
-|`PackedInt32`|Attached|Value used by alignments to attach | 
+|`PackedInt32`|Attached|NetId of the customNetworkTransform this is attached to (-1 represents no attachment)| 
 
 ```ts
 enum EdgeAlignments {
@@ -17,8 +17,7 @@ enum EdgeAlignments {
   Top = 8,
   Bottom = 4,
   LeftTop = 9,
-  None = 0,
-  Meeting = 11
+  None = 11
 }
 ```
 
