@@ -38,6 +38,8 @@ A successful response (`200 OK`) will return a JSON string with the following st
     "client_id": string,
     // The user's access token
     "client_token": string,
+    // The user's Discord ID
+    "discord_id": string | null,
     // The user's display name
     "display_name": string,
     // - If the user is currently banned then this will be an ISO 8601
@@ -84,7 +86,11 @@ A successful response (`200 OK`) will return a JSON string with the following st
       "name.color.gold": boolean,
       // Whether or not the user chose a player name matching their character color
       "name.color.match": boolean
-    }
+    },
+    // The user's game options
+    "options": [
+        // ...
+    ]
   }
 }
 ```
@@ -92,6 +98,64 @@ A successful response (`200 OK`) will return a JSON string with the following st
 A `401 Unauthorized` response will be returned if the server access token is invalid.
 
 A `404 Not Found` response will be returned if no user with the given hyphenated UUID exists.
+
+## Update Game Options
+
+Update a user's game options.
+
+| Method | Endpoint |
+| --- | --- |
+| `PUT` | `/users/<uuid>/options` where `<uuid>` is the user's hyphenated UUID |
+
+#### Request
+
+The request requires the following headers:
+
+| Header | Value |
+| --- | --- |
+| `Accept` | `application/json` |
+| `Content-Type` | `application/json` |
+| `Authorization` | `Bearer <token>` where `<token>` is the server's access token |
+
+As described in the `Content-Type` header, the request body should be a JSON string with the following structure:
+
+```ts
+{
+  "value": {
+    // Numbers
+    "value": number,
+    "step": number,
+    "lower": number,
+    "upper": number,
+    "zeroIsInfinity": boolean,
+    "suffix": string,
+  } | {
+    // Booleans
+    "value": boolean
+  } | {
+    // Enums
+    "index": number,
+    "options": string[],
+  },
+  "category": string,
+  "priority": number,
+  "key": string,
+}
+```
+
+#### Response
+
+A successful response (`200 OK`) will return a JSON string with the following structure:
+
+```ts
+{
+  "success": true
+}
+```
+
+A `401 Unauthorized` response will be returned if the login failed.
+
+A `400 Bad Request` response will be returned if the body has any missing or malformed fields.
 
 ## Kick a User
 

@@ -1,4 +1,6 @@
-# `0x85` Root - DeclareHat
+# `0x85` Root - DeclareHat (old)
+
+This is deprecated and now unused
 
 ## S2C (Request)
 |      Type      |      Name      |              Description              |
