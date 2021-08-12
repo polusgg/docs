@@ -53,11 +53,20 @@ A successful response (`200 OK`) will return a JSON string with the following st
     "discord_id": string | null,
     // The user's display name
     "display_name": string,
-    // - If the user is currently banned then this will be an ISO 8601
-    //   timestamp describing the time at which their ban will expire
-    //   (e.g. 2021-04-20T00:03:41.000000Z)
-    // - If the user is not currently banned then this will be null
+    // The timestamp at which the user's account was created
+    "created_at": string,
+    // The timestamp after which the user will be able to change their name
+    "name_change_available_at": string
+    // Whether or not the user is currently banned
+    "banned": boolean,
+    // The timestamp at which the user's ban will expire
+    // If the user is banned and this is null, then the user is banned indefinitely
     "banned_until": string | null,
+    // Whether or not the user is currently muted
+    "muted": boolean,
+    // The timestamp at which the user's mute will expire
+    // If the user is muted and this is null, then the user is muted indefinitely
+    "muted_until": string | null,
     // A list of all perks that the user has access to
     // This example lists all possible perks
     "perks": [
@@ -141,11 +150,20 @@ A successful response (`200 OK`) will return a JSON string with the following st
     "discord_id": string | null,
     // The user's display name
     "display_name": string,
-    // - If the user is currently banned then this will be an ISO 8601
-    //   timestamp describing the time at which their ban will expire
-    //   (e.g. 2021-04-20T00:03:41.000000Z)
-    // - If the user is not currently banned then this will be null
+    // The timestamp at which the user's account was created
+    "created_at": string,
+    // The timestamp after which the user will be able to change their name
+    "name_change_available_at": string
+    // Whether or not the user is currently banned
+    "banned": boolean,
+    // The timestamp at which the user's ban will expire
+    // If the user is banned and this is null, then the user is banned indefinitely
     "banned_until": string | null,
+    // Whether or not the user is currently muted
+    "muted": boolean,
+    // The timestamp at which the user's mute will expire
+    // If the user is muted and this is null, then the user is muted indefinitely
+    "muted_until": string | null,
     // A list of all perks that the user has access to
     // This example lists all possible perks
     "perks": [

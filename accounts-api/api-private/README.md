@@ -42,11 +42,20 @@ A successful response (`200 OK`) will return a JSON string with the following st
     "discord_id": string | null,
     // The user's display name
     "display_name": string,
-    // - If the user is currently banned then this will be an ISO 8601
-    //   timestamp describing the time at which their ban will expire
-    //   (e.g. 2021-04-20T00:03:41.000000Z)
-    // - If the user is not currently banned then this will be null
+    // The timestamp at which the user's account was created
+    "created_at": string,
+    // The timestamp after which the user will be able to change their name
+    "name_change_available_at": string
+    // Whether or not the user is currently banned
+    "banned": boolean,
+    // The timestamp at which the user's ban will expire
+    // If the user is banned and this is null, then the user is banned indefinitely
     "banned_until": string | null,
+    // Whether or not the user is currently muted
+    "muted": boolean,
+    // The timestamp at which the user's mute will expire
+    // If the user is muted and this is null, then the user is muted indefinitely
+    "muted_until": string | null,
     // A list of all perks that the user has access to
     // This example lists all possible perks
     "perks": [
@@ -179,7 +188,7 @@ As described in the `Content-Type` header, the request body should be a JSON str
 
 ```ts
 {
-  // The hyphenated UUID of the lobby that the player was kicked from
+  // The hyphenated UUID of the lobby from which the player was kicked
   "game_uuid": string,
   // The hyphenated UUID of the kicking user
   "actor_uuid": string,
@@ -226,17 +235,18 @@ As described in the `Content-Type` header, the request body should be a JSON str
 
 ```ts
 {
-  // The hyphenated UUID of the lobby that the player was kicked from
+  // The hyphenated UUID of the lobby from which the player was banned
   "game_uuid": string,
-  // The hyphenated UUID of the kicking user
+  // The hyphenated UUID of the banning user
   "actor_uuid": string,
-  // The hyphenated UUID of the user that was kicked
+  // The hyphenated UUID of the user that was banned
   "target_uuid": string,
-  // The reason for why the user was kicked
+  // The reason for why the user was banned
   "reason": string,
   // The length of the ban
-  // - One or more numbers followed immediately by one of either 'w', 'd', or 'h'
-  // - '1w' would ban the user for 1 week, '2d' for 2 days, and '10h' for 10 hours
+  // - One or more numbers followed immediately by either 'w', 'd', or 'h'
+  //   e.g., '1w' for 1 week, '2d' for 2 days, and '10h' for 10 hours
+  // - Set to `null` for an indefinite ban
   "duration": string
 }
 ```
@@ -249,7 +259,65 @@ A successful response (`200 OK`) will return a JSON string with the following st
 {
   "success": true,
   "data": {
-    // The duration, in hours, of the user's ban
+    // The duration, in hours, of the user's ban.
+    // - `-1` if the ban is indefinite
+    "duration_hours": number
+  }
+}
+```
+
+A `401 Unauthorized` response will be returned if the login failed.
+
+A `400 Bad Request` response will be returned if the body has any missing or malformed fields.
+
+## Mute a User
+
+Mute a user and store an associated log entry.
+
+| Method | Endpoint |
+| --- | --- |
+| `PUT` | `/logs/mute` |
+
+#### Request
+
+The request requires the following headers:
+
+| Header | Value |
+| --- | --- |
+| `Accept` | `application/json` |
+| `Content-Type` | `application/json` |
+| `Authorization` | `Bearer <token>` where `<token>` is the server's access token |
+
+As described in the `Content-Type` header, the request body should be a JSON string with the following structure:
+
+```ts
+{
+  // The hyphenated UUID of the lobby in which the player was muted
+  "game_uuid": string,
+  // The hyphenated UUID of the muting user
+  "actor_uuid": string,
+  // The hyphenated UUID of the user that was muted
+  "target_uuid": string,
+  // The reason for why the user was muted
+  "reason": string,
+  // The length of the mute
+  // - One or more numbers followed immediately by either 'w', 'd', or 'h'
+  //   e.g., '1w' for 1 week, '2d' for 2 days, and '10h' for 10 hours
+  // - Set to `null` for an indefinite mute
+  "duration": string
+}
+```
+
+#### Response
+
+A successful response (`200 OK`) will return a JSON string with the following structure:
+
+```ts
+{
+  "success": true,
+  "data": {
+    // The duration, in hours, of the user's mute.
+    // - `-1` if the mute is indefinite
     "duration_hours": number
   }
 }

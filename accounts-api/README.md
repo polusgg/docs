@@ -6,6 +6,10 @@ Interact with the Polus.gg accounts system.
 
 The base URL for all API requests is `https://account.polus.gg`.
 
+### Timestamps
+
+All timestamps are strings in the ISO 8601 format, e.g., `2021-04-20T00:03:41.000000Z`
+
 ### Error Checking
 
 All successful responses (`200 OK`) will return a JSON string that includes a `successful` field with the value set to `true`.
