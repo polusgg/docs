@@ -9,6 +9,7 @@ This component contains the following data:
 |`Float32`|CurrentTime|The current timer state|
 |`Boolean`|IsCountingDown|When true, the game will start counting the button down|
 |`Byte[4]`|Color|The color of the timer in RGBA format|
+|`Byte[]` |Keys|
 
 If MaxTimer is zero, the server should not send any cooldown data (extend cooldown).
 
