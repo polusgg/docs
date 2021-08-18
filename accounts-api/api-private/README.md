@@ -99,7 +99,11 @@ A successful response (`200 OK`) will return a JSON string with the following st
     // The user's game options
     "options": [
         // ...
-    ]
+    ],
+    // The user's cosmetic options
+    "cosmetics": {
+        // ...
+    }
   }
 }
 ```
@@ -199,7 +203,11 @@ A successful response (`200 OK`) will return a JSON string with the following st
     // The user's game options
     "options": [
         // ...
-    ]
+    ],
+    // The user's cosmetic options
+    "cosmetics": {
+        // ...
+    }
   }
 }
 ```
@@ -299,7 +307,11 @@ A successful response (`200 OK`) will return a JSON string with the following st
     // The user's game options
     "options": [
         // ...
-    ]
+    ],
+    // The user's cosmetic options
+    "cosmetics": {
+        // ...
+    }
   }
 }
 ```
@@ -311,6 +323,8 @@ A `404 Not Found` response will be returned if no user with the given display na
 ## Update Game Options
 
 Update a user's game options.
+
+The body of this request will overwrite the previous data. It does not allow partial updates.
 
 | Method | Endpoint |
 | --- | --- |
@@ -349,6 +363,49 @@ As described in the `Content-Type` header, the request body should be a JSON str
   "category": string,
   "priority": number,
   "key": string,
+}
+```
+
+#### Response
+
+A successful response (`200 OK`) will return a JSON string with the following structure:
+
+```ts
+{
+  "success": true
+}
+```
+
+A `401 Unauthorized` response will be returned if the login failed.
+
+A `400 Bad Request` response will be returned if the body has any missing or malformed fields.
+
+## Update Cosmetics
+
+Update a user's cosmetic options.
+
+The body of this request will overwrite the previous data. It does not allow partial updates.
+
+| Method | Endpoint |
+| --- | --- |
+| `PUT` | `/users/update/<uuid>/cosmetics` where `<uuid>` is the user's hyphenated UUID |
+
+#### Request
+
+The request requires the following headers:
+
+| Header | Value |
+| --- | --- |
+| `Accept` | `application/json` |
+| `Content-Type` | `application/json` |
+| `Authorization` | `Bearer <token>` where `<token>` is the server's access token |
+
+As described in the `Content-Type` header, the request body should be a JSON string with the following structure:
+
+```ts
+{
+  // An arbitrary amount of string-number mappings
+  string: number
 }
 ```
 

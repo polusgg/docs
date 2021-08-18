@@ -106,6 +106,14 @@ A successful response (`200 OK`) will return a JSON string with the following st
       "name.color.gold": boolean,
       // Whether or not the user chose a player name matching their character color
       "name.color.match": boolean
+    },
+    // The user's game options
+    "options": [
+        // ...
+    ],
+    // The user's cosmetic options
+    "cosmetics": {
+        // ...
     }
   }
 }
@@ -203,6 +211,14 @@ A successful response (`200 OK`) will return a JSON string with the following st
       "name.color.gold": boolean,
       // Whether or not the user chose a player name matching their character color
       "name.color.match": boolean
+    },
+    // The user's game options
+    "options": [
+        // ...
+    ],
+    // The user's cosmetic options
+    "cosmetics": {
+        // ...
     }
   }
 }
