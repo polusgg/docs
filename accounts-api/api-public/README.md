@@ -60,7 +60,9 @@ A successful response (`200 OK`) will return a JSON string with the following st
     // The timestamp at which the user's account was created
     "created_at": string,
     // The timestamp after which the user will be able to change their name
-    "name_change_available_at": string
+    "name_change_available_at": string,
+    // Whether or not the user is currently watchlisted
+    "watchlisted": boolean,
     // Whether or not the user is currently banned
     "banned": boolean,
     // The timestamp at which the user's ban will expire
@@ -169,7 +171,9 @@ A successful response (`200 OK`) will return a JSON string with the following st
     // The timestamp at which the user's account was created
     "created_at": string,
     // The timestamp after which the user will be able to change their name
-    "name_change_available_at": string
+    "name_change_available_at": string,
+    // Whether or not the user is currently watchlisted
+    "watchlisted": boolean,
     // Whether or not the user is currently banned
     "banned": boolean,
     // The timestamp at which the user's ban will expire

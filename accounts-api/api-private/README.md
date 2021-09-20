@@ -8,9 +8,47 @@ The base path for all private API requests is `/api-private/v1`.
 
 ---
 
+## Get Watchlisted Users
+
+Get all users that are currently on the watchlist.
+
+| Method | Endpoint |
+| --- | --- |
+| `GET` | `/users/watchlist` |
+
+#### Request
+
+The request requires the following headers:
+
+| Header | Value |
+| --- | --- |
+| `Accept` | `application/json` |
+| `Authorization` | `Bearer <token>` where `<token>` is the server's access token |
+
+#### Response
+
+A successful response (`200 OK`) will return a JSON string with the following structure:
+
+```ts
+{
+  "success": true,
+  // Response data
+  "data": [
+    // A list of all users that are currently on the watchlist
+    {
+      // User object
+    }
+  ]
+}
+```
+
+A `401 Unauthorized` response will be returned if the server access token is invalid.
+
+A `404 Not Found` response will be returned if no user with the given hyphenated UUID exists.
+
 ## Get a User
 
-Get an user by its hyphenated UUID.
+Get a user by its hyphenated UUID.
 
 | Method | Endpoint |
 | --- | --- |
@@ -49,7 +87,9 @@ A successful response (`200 OK`) will return a JSON string with the following st
     // The timestamp at which the user's account was created
     "created_at": string,
     // The timestamp after which the user will be able to change their name
-    "name_change_available_at": string
+    "name_change_available_at": string,
+    // Whether or not the user is currently watchlisted
+    "watchlisted": boolean,
     // Whether or not the user is currently banned
     "banned": boolean,
     // The timestamp at which the user's ban will expire
@@ -118,11 +158,11 @@ A `404 Not Found` response will be returned if no user with the given hyphenated
 
 ## Get a User by their Discord ID
 
-Get an user by its hyphenated UUID.
+Get a user by its linked Discord ID.
 
 | Method | Endpoint |
 | --- | --- |
-| `GET` | `/users/discord/<diacord>` where `<diacord>` is the user's Discord Snowflake ID |
+| `GET` | `/users/discord/<discord>` where `<discord>` is the user's Discord Snowflake ID |
 
 #### Request
 
@@ -157,7 +197,9 @@ A successful response (`200 OK`) will return a JSON string with the following st
     // The timestamp at which the user's account was created
     "created_at": string,
     // The timestamp after which the user will be able to change their name
-    "name_change_available_at": string
+    "name_change_available_at": string,
+    // Whether or not the user is currently watchlisted
+    "watchlisted": boolean,
     // Whether or not the user is currently banned
     "banned": boolean,
     // The timestamp at which the user's ban will expire
@@ -226,7 +268,7 @@ A `404 Not Found` response will be returned if no user with the given Discord ID
 
 ## Get a User by their Display Name
 
-Get an user by its hyphenated UUID.
+Get a user by its display name.
 
 | Method | Endpoint |
 | --- | --- |
@@ -265,7 +307,9 @@ A successful response (`200 OK`) will return a JSON string with the following st
     // The timestamp at which the user's account was created
     "created_at": string,
     // The timestamp after which the user will be able to change their name
-    "name_change_available_at": string
+    "name_change_available_at": string,
+    // Whether or not the user is currently watchlisted
+    "watchlisted": boolean,
     // Whether or not the user is currently banned
     "banned": boolean,
     // The timestamp at which the user's ban will expire
@@ -325,6 +369,68 @@ A successful response (`200 OK`) will return a JSON string with the following st
         // ...
     }
   }
+}
+```
+
+A `401 Unauthorized` response will be returned if the server access token is invalid.
+
+A `404 Not Found` response will be returned if no user with the given display name exists.
+
+## Add a User to the Watchlist
+
+Adds a user to the watchlist.
+
+| Method | Endpoint |
+| --- | --- |
+| `PATCH` | `/users/<uuid>/watch` where `<uuid>` is the user's hyphenated UUID |
+
+#### Request
+
+The request requires the following headers:
+
+| Header | Value |
+| --- | --- |
+| `Accept` | `application/json` |
+| `Authorization` | `Bearer <token>` where `<token>` is the server's access token |
+
+#### Response
+
+A successful response (`200 OK`) will return a JSON string with the following structure:
+
+```ts
+{
+  "success": true,
+}
+```
+
+A `401 Unauthorized` response will be returned if the server access token is invalid.
+
+A `404 Not Found` response will be returned if no user with the given display name exists.
+
+## Remove a User from the Watchlist
+
+Removes a user from the watchlist.
+
+| Method | Endpoint |
+| --- | --- |
+| `DELETE` | `/users/<uuid>/watch` where `<uuid>` is the user's hyphenated UUID |
+
+#### Request
+
+The request requires the following headers:
+
+| Header | Value |
+| --- | --- |
+| `Accept` | `application/json` |
+| `Authorization` | `Bearer <token>` where `<token>` is the server's access token |
+
+#### Response
+
+A successful response (`200 OK`) will return a JSON string with the following structure:
+
+```ts
+{
+  "success": true,
 }
 ```
 
