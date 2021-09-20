@@ -51,6 +51,10 @@ A successful response (`200 OK`) will return a JSON string with the following st
     "client_token": string,
     // The user's Discord ID
     "discord_id": string | null,
+    // The user's email address
+    "email": string,
+    // The timestamp at which the user's email address was verified
+    "email_verified_at": string | null,
     // The user's display name
     "display_name": string,
     // The timestamp at which the user's account was created
@@ -156,6 +160,10 @@ A successful response (`200 OK`) will return a JSON string with the following st
     "client_token": string,
     // The user's Discord ID
     "discord_id": string | null,
+    // The user's email address
+    "email": string,
+    // The timestamp at which the user's email address was verified
+    "email_verified_at": string | null,
     // The user's display name
     "display_name": string,
     // The timestamp at which the user's account was created
