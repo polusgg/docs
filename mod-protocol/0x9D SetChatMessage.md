@@ -10,14 +10,14 @@
 ## S2C
 | Type | Name | Description |
 |------|------|-------------|
-| `Byte[16]` | MessageUUID | The unique identifier of the message in UUID format |
-| `Byte` | Align | Where the chat message should appear in the chat window, see [Chat Alignment](#chat-alignment) |
-| `String` | AuthorName | The name of the author to appear as sending the message |
-| `Boolean` | AuthorAlive | Whether or not the author was alive sending the message, and thus how to display the message |
-| `UInt32` | AuthorHat | The ID of the hat cosmetic of the author who sent the message |
-| `UInt32` | AuthorSkin | The ID of the skin cosmetic of the author who sent the message |
-| `UInt8` | AuthorColorRed | How red to make the author appear |
-| `UInt8` | AuthorColorGreen | How green to make the author appear |
-| `Uint8` | AuthorColorBlue | How blue to make the author appear |
-| `String` | MessageContent | The content of the message |
-| `Boolean` | FromQuickChat | Whether or not this message was sent via the quick chat menu |
+| `Byte[16]` | UUID | The unique identifier of the message in UUID format |
+| `Byte` | Align | Where the message should appear in the chat window, see [Chat Alignment](#chat-alignment) |
+| `String` | Name | The name of the author to appear as |
+| `Boolean` | Dead | Whether the author is dead |
+| `PackedUInt32` | Hat | The ID of the hat of the player |
+| `PackedUInt32` | Skin | The ID of the skin of the player |
+| `PackedUInt32` | Pet | The ID of the pet of the player |
+| `Byte[4]` | ShadowColor | The shadow color of the author |
+| `Byte[4]` | BodyColor | The body color at the author |
+| `Boolean` | QuickChat | Whether the mesage is a quick chat message |
+| `Byte[]` | MessageContent | The content of the message, can be  |
