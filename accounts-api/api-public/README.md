@@ -73,6 +73,8 @@ A successful response (`200 OK`) will return a JSON string with the following st
     // The timestamp at which the user's mute will expire
     // If the user is muted and this is null, then the user is muted indefinitely
     "muted_until": string | null,
+    // The language in which the user wants to play the game
+    "language": string,
     // A list of all perks that the user has access to
     // This example lists all possible perks
     "perks": [
@@ -184,6 +186,8 @@ A successful response (`200 OK`) will return a JSON string with the following st
     // The timestamp at which the user's mute will expire
     // If the user is muted and this is null, then the user is muted indefinitely
     "muted_until": string | null,
+    // The language in which the user wants to play the game
+    "language": string,
     // A list of all perks that the user has access to
     // This example lists all possible perks
     "perks": [
