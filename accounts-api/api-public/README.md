@@ -66,15 +66,18 @@ A successful response (`200 OK`) will return a JSON string with the following st
     // Whether or not the user is currently banned
     "banned": boolean,
     // The timestamp at which the user's ban will expire
-    // If the user is banned and this is null, then the user is banned indefinitely
+    // If the user is banned and this is `null`, then the user is banned indefinitely
     "banned_until": string | null,
     // Whether or not the user is currently muted
     "muted": boolean,
     // The timestamp at which the user's mute will expire
-    // If the user is muted and this is null, then the user is muted indefinitely
+    // If the user is muted and this is `null`, then the user is muted indefinitely
     "muted_until": string | null,
     // The language in which the user wants to play the game
     "language": string,
+    // The pronouns with which the user wants to be associated
+    // `m` for 'He/Him', `f` for 'She/Her', `t` for 'They/Them'
+    "pronouns": string,
     // A list of all perks that the user has access to
     // This example lists all possible perks
     "perks": [
@@ -179,15 +182,18 @@ A successful response (`200 OK`) will return a JSON string with the following st
     // Whether or not the user is currently banned
     "banned": boolean,
     // The timestamp at which the user's ban will expire
-    // If the user is banned and this is null, then the user is banned indefinitely
+    // If the user is banned and this is `null`, then the user is banned indefinitely
     "banned_until": string | null,
     // Whether or not the user is currently muted
     "muted": boolean,
     // The timestamp at which the user's mute will expire
-    // If the user is muted and this is null, then the user is muted indefinitely
+    // If the user is muted and this is `null`, then the user is muted indefinitely
     "muted_until": string | null,
     // The language in which the user wants to play the game
     "language": string,
+    // The pronouns with which the user wants to be associated
+    // `m` for 'He/Him', `f` for 'She/Her', `t` for 'They/Them'
+    "pronouns": string,
     // A list of all perks that the user has access to
     // This example lists all possible perks
     "perks": [

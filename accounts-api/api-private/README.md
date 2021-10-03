@@ -93,15 +93,18 @@ A successful response (`200 OK`) will return a JSON string with the following st
     // Whether or not the user is currently banned
     "banned": boolean,
     // The timestamp at which the user's ban will expire
-    // If the user is banned and this is null, then the user is banned indefinitely
+    // If the user is banned and this is `null`, then the user is banned indefinitely
     "banned_until": string | null,
     // Whether or not the user is currently muted
     "muted": boolean,
     // The timestamp at which the user's mute will expire
-    // If the user is muted and this is null, then the user is muted indefinitely
+    // If the user is muted and this is `null`, then the user is muted indefinitely
     "muted_until": string | null,
     // The language in which the user wants to play the game
     "language": string,
+    // The pronouns with which the user wants to be associated
+    // `m` for 'He/Him', `f` for 'She/Her', `t` for 'They/Them'
+    "pronouns": string,
     // A list of all perks that the user has access to
     // This example lists all possible perks
     "perks": [
@@ -205,15 +208,18 @@ A successful response (`200 OK`) will return a JSON string with the following st
     // Whether or not the user is currently banned
     "banned": boolean,
     // The timestamp at which the user's ban will expire
-    // If the user is banned and this is null, then the user is banned indefinitely
+    // If the user is banned and this is `null`, then the user is banned indefinitely
     "banned_until": string | null,
     // Whether or not the user is currently muted
     "muted": boolean,
     // The timestamp at which the user's mute will expire
-    // If the user is muted and this is null, then the user is muted indefinitely
+    // If the user is muted and this is `null`, then the user is muted indefinitely
     "muted_until": string | null,
     // The language in which the user wants to play the game
     "language": string,
+    // The pronouns with which the user wants to be associated
+    // `m` for 'He/Him', `f` for 'She/Her', `t` for 'They/Them'
+    "pronouns": string,
     // A list of all perks that the user has access to
     // This example lists all possible perks
     "perks": [
@@ -317,15 +323,18 @@ A successful response (`200 OK`) will return a JSON string with the following st
     // Whether or not the user is currently banned
     "banned": boolean,
     // The timestamp at which the user's ban will expire
-    // If the user is banned and this is null, then the user is banned indefinitely
+    // If the user is banned and this is `null`, then the user is banned indefinitely
     "banned_until": string | null,
     // Whether or not the user is currently muted
     "muted": boolean,
     // The timestamp at which the user's mute will expire
-    // If the user is muted and this is null, then the user is muted indefinitely
+    // If the user is muted and this is `null`, then the user is muted indefinitely
     "muted_until": string | null,
     // The language in which the user wants to play the game
     "language": string,
+    // The pronouns with which the user wants to be associated
+    // `m` for 'He/Him', `f` for 'She/Her', `t` for 'They/Them'
+    "pronouns": string,
     // A list of all perks that the user has access to
     // This example lists all possible perks
     "perks": [
@@ -624,8 +633,8 @@ As described in the `Content-Type` header, the request body should be a JSON str
 
 ```ts
 {
-  // The hyphenated UUID of the lobby from which the player was kicked, or `null`
-  "game_uuid": string,
+  // The hyphenated UUID of the lobby from which the player was kicked
+  "game_uuid": string | null,
   // The hyphenated UUID of the kicking user
   "actor_uuid": string,
   // The hyphenated UUID of the user that was kicked
@@ -671,8 +680,8 @@ As described in the `Content-Type` header, the request body should be a JSON str
 
 ```ts
 {
-  // The hyphenated UUID of the lobby from which the player was banned, or `null`
-  "game_uuid": string,
+  // The hyphenated UUID of the lobby from which the player was banned
+  "game_uuid": string | null,
   // The hyphenated UUID of the banning user
   "actor_uuid": string,
   // The hyphenated UUID of the user that was banned
@@ -728,8 +737,8 @@ As described in the `Content-Type` header, the request body should be a JSON str
 
 ```ts
 {
-  // The hyphenated UUID of the lobby in which the player was muted, or `null`
-  "game_uuid": string,
+  // The hyphenated UUID of the lobby in which the player was muted
+  "game_uuid": string | null,
   // The hyphenated UUID of the muting user
   "actor_uuid": string,
   // The hyphenated UUID of the user that was muted
@@ -817,8 +826,8 @@ A successful response (`200 OK`) will return a JSON string with the following st
     {
       // The ID of the kick
       "id": number,
-      // The hyphenated UUID of the lobby in which the kick occurred, or `null`
-      "game_uuid": string
+      // The hyphenated UUID of the lobby in which the kick occurred
+      "game_uuid": string | null,
       // The internal ID of the kicking user
       "acting_user_id": number.
       // The internal ID of the user that was kicked
@@ -904,8 +913,8 @@ A successful response (`200 OK`) will return a JSON string with the following st
     {
       // The ID of the kick
       "id": number,
-      // The hyphenated UUID of the lobby in which the kick occurred, or `null`
-      "game_uuid": string
+      // The hyphenated UUID of the lobby in which the kick occurred
+      "game_uuid": string | null,
       // The internal ID of the kicking user
       "acting_user_id": number.
       // The internal ID of the user that was kicked
@@ -991,10 +1000,10 @@ A successful response (`200 OK`) will return a JSON string with the following st
     {
       // The ID of the ban
       "id": number,
-      // The hyphenated UUID of the lobby in which the ban occurred, or `null` if it happened outside of a game
-      "game_uuid": string
+      // The hyphenated UUID of the lobby in which the ban occurred
+      "game_uuid": string | null,
       // The timestamp at which the user's ban will expire
-      // If this is null then the user is banned indefinitely
+      // If this is `null` then the user is banned indefinitely
       "banned_until": string
       // The internal ID of the banning user
       "acting_user_id": number.
@@ -1081,10 +1090,10 @@ A successful response (`200 OK`) will return a JSON string with the following st
     {
       // The ID of the ban
       "id": number,
-      // The hyphenated UUID of the lobby in which the ban occurred, or `null` if it happened outside of a game
-      "game_uuid": string
+      // The hyphenated UUID of the lobby in which the ban occurred
+      "game_uuid": string | null,
       // The timestamp at which the user's ban will expire
-      // If this is null then the user is banned indefinitely
+      // If this is `null` then the user is banned indefinitely
       "banned_until": string
       // The internal ID of the banning user
       "acting_user_id": number.
@@ -1171,10 +1180,10 @@ A successful response (`200 OK`) will return a JSON string with the following st
     {
       // The ID of the mute
       "id": number,
-      // The hyphenated UUID of the lobby in which the mute occurred, or `null` if it happened outside of a game
-      "game_uuid": string
+      // The hyphenated UUID of the lobby in which the mute occurred
+      "game_uuid": string | null,
       // The timestamp at which the user's mute will expire
-      // If this is null then the user is muted indefinitely
+      // If this is `null` then the user is muted indefinitely
       "muted_until": string
       // The internal ID of the muting user
       "acting_user_id": number.
@@ -1261,10 +1270,10 @@ A successful response (`200 OK`) will return a JSON string with the following st
     {
       // The ID of the mute
       "id": number,
-      // The hyphenated UUID of the lobby in which the mute occurred, or `null` if it happened outside of a game
-      "game_uuid": string
+      // The hyphenated UUID of the lobby in which the mute occurred
+      "game_uuid": string | null
       // The timestamp at which the user's mute will expire
-      // If this is null then the user is muted indefinitely
+      // If this is `null` then the user is muted indefinitely
       "muted_until": string
       // The internal ID of the muting user
       "acting_user_id": number.
